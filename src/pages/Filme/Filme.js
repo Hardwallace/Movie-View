@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import './Filme.css'
 
 import api from '../../services/api'
@@ -9,6 +9,7 @@ function Filme(){
   const { id } = useParams();
   const [filme, setFilme] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigate();
 
   useEffect(() => {
     async function loadFilme(){
@@ -20,10 +21,13 @@ function Filme(){
       })
       .then((response) => {
         setFilme(response.data);
+        console.log(response.data)
         setLoading(false)
       })
       .catch(() => {
-        console.log("Filme não encontrado")
+        console.log("Filme não encontrado");
+        navigation("/", {replace: true});
+        return;
       })
     }
 
@@ -32,7 +36,25 @@ function Filme(){
     return () => {
       console.log("O componente foi desmontado")
     }
-  }, []);
+  }, [navigation, id]);
+
+  function salvarFilme(){
+    const minhaLista = localStorage.getItem("@primeflix");
+
+    let filmesSalvos = JSON.parse(minhaLista) || [];
+
+    const hasFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id)
+
+    if(hasFilme){
+      alert("Esse filme está na lista");
+      return;
+    }
+
+    filmesSalvos.push(filme);
+    localStorage.setItem("@primeflix", JSON.stringify(filmesSalvos));
+    alert("Filme salvo com sucesso");
+
+  }
 
   if(loading){
     return(
@@ -47,18 +69,36 @@ function Filme(){
       <h1>{filme.title}</h1>
       <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.title}/>
       <h3>Sinopse</h3>
-      <span>{filme.overview}</span>
-      <strong>Avaliação: {filme.vote_average.toFixed(1)} / 10</strong>
+      <span style={{textAlign: 'justify'}}>{filme.overview}</span>
+
+      <h4>Produtor(es) </h4>
+      {filme.production_companies?.map(production => (
+        <span key={production.id} style={{ display: 'block'}}>
+        {production.logo_path && (
+          <img 
+            src={`https://image.tmdb.org/t/p/w200${production.logo_path}`} 
+            alt={production.name} 
+            style={{ width: '30px', objectFit: 'contain', marginRight: '6px' }} 
+          />
+        )}
+        <span>{production.name}</span>
+        </span>
+      ))}
+
+      <span><strong>Gênero: </strong>{filme.genres?.map(genre => genre.name).join('/ ')}</span>
+      
+      <span><strong>Avaliação: </strong>{filme.vote_average.toFixed(1)}/10</span>
+
+      <span> <strong>Data de lançamento:</strong> {filme.release_date.split('-').reverse().join('/')}</span>
 
       <div className="area-buttons">
-        <button>Salvar</button>
+        <button onClick={salvarFilme}>Salvar</button>
         <button>
-          <a href="#">
+          <a target="_blank" rel="external" href={`https://youtube.com/results?search_query=${encodeURIComponent(filme.title + ' Trailer')} `}>
             Trailer
           </a>
         </button>
       </div>
-
 
     </div>
   )
