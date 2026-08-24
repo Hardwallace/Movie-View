@@ -1,6 +1,7 @@
 import './Favoritos.css'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 function Favoritos(){
 
@@ -11,10 +12,21 @@ function Favoritos(){
         setFilmes(JSON.parse(minhaLista) || [])
     }, [])
 
+    function excluirFilme(id){
+        let filtroFilmes = filmes.filter((item) => {
+            return (item.id !== id)
+        })
+
+        setFilmes(filtroFilmes);
+        localStorage.setItem("@primeflix", JSON.stringify(filtroFilmes) )
+        toast.success("Filme removido com sucesso")
+    }
+
     return(
         <div className='meus-filmes'>
             <h1>Meus Filmes</h1>
 
+            {filmes.length === 0 && <span>Você não tem nenhum filme salvo</span>}
             <ul>
                 {filmes.map((item) => {
                     return(
@@ -23,12 +35,13 @@ function Favoritos(){
 
                             <div>
                                 <Link to={`/filme/${item.id}`}>Ver detalhes</Link>
-                                <button>Excluir</button>
+                                <button onClick={() => excluirFilme(item.id)}>Excluir</button>
                             </div>
                         </li>
                     )
                 })}
             </ul>
+            <button className='voltar'><Link to="/">Menu principal</Link></button>
         </div>
     )
 }

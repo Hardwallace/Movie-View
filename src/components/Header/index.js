@@ -5,7 +5,7 @@ function Header(){
     return(
         <header>
             <Link to='/' className='logo'>Movie Viewer</Link>
-            <Link to='/favoritos' className='favoritos'>Meus Filmes Salvos</Link>
+            <Link to='/favoritos' className='favoritos'>Filmes Salvos</Link>
         </header>
     )
 }

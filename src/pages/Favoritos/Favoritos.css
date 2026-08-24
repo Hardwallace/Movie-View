@@ -36,3 +36,29 @@
     color: #116feb;
     margin-right: 14px;
 }
+
+.meus-filmes .voltar{
+    padding: 10px;
+    color: beige;
+    background-color: #116feb;
+    border-radius: 7px;
+    border-style: none;
+    
+}
+
+.meus-filmes .voltar a{
+    text-decoration: none;
+    color: beige;
+    padding: 10px;
+}
+
+.meus-filmes .voltar:hover{
+    background-color: #05e905;
+    color: black;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.meus-filmes .voltar a:hover{
+    color: black;
+}

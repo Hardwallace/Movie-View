@@ -41,7 +41,12 @@
 }
 
 .area-buttons button:hover{
-    background-color: brown;
+    background-color: rgb(250, 102, 3);
+    color: #fff;
+}
+
+.area-buttons .salvar:hover{
+    background-color: green;
     color: #fff;
 }
 
@@ -51,6 +56,6 @@
     transition: all 0.5s;
 }
 
-.area-buttons a:hover{
+.area-buttons button a:hover{
     color: #fff;
 }

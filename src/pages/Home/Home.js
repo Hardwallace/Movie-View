@@ -17,7 +17,7 @@ function Home(){
           page: 1
         }
       })
-      setFilmes(response.data.results.slice(0,10))
+      setFilmes(response.data.results.slice(0,12))
       setLoading(false)
     }
 
@@ -39,7 +39,7 @@ function Home(){
             return(
               <article key={filme.id}>
                 <strong>{filme.title}</strong>
-                <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="Imagem dos posteres"/>
+                <Link to={`/filme/${filme.id}`} style={{backgroundColor: "white"}}><img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="Imagem dos posteres"/></Link>
                 <Link to={`/filme/${filme.id}`}>Acessar</Link>
               </article>
             )

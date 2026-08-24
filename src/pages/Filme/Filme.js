@@ -4,6 +4,8 @@ import './Filme.css'
 
 import api from '../../services/api'
 
+import {toast} from 'react-toastify'
+
 function Filme(){
 
   const { id } = useParams();
@@ -46,13 +48,13 @@ function Filme(){
     const hasFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id)
 
     if(hasFilme){
-      alert("Esse filme está na lista");
+      toast.warn("Esse filme já está na lista")
       return;
     }
 
     filmesSalvos.push(filme);
     localStorage.setItem("@primeflix", JSON.stringify(filmesSalvos));
-    alert("Filme salvo com sucesso");
+    toast.success("Filme salvo com sucesso")
 
   }
 
@@ -92,9 +94,9 @@ function Filme(){
       <span> <strong>Data de lançamento:</strong> {filme.release_date.split('-').reverse().join('/')}</span>
 
       <div className="area-buttons">
-        <button onClick={salvarFilme}>Salvar</button>
+        <button onClick={salvarFilme} className="salvar">Salvar</button>
         <button>
-          <a target="_blank" rel="external" href={`https://youtube.com/results?search_query=${encodeURIComponent(filme.title + ' Trailer')} `}>
+          <a target="_blank" rel="noreferrer" href={`https://youtube.com/results?search_query=${encodeURIComponent(filme.title + ' Trailer')} `}>
             Trailer
           </a>
         </button>
