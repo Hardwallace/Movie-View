@@ -2,6 +2,7 @@ import './Favoritos.css'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { FiX } from 'react-icons/fi';
 
 function Favoritos(){
 
@@ -27,7 +28,22 @@ function Favoritos(){
             <h1>Meus Filmes</h1>
 
             {filmes.length === 0 && <span>Você não tem nenhum filme salvo</span>}
-            <ul>
+
+            <div className="containerFavorite">
+                <div className="lista-filmes">
+                    {filmes.map((filme) =>{
+                        return(
+                            <article key={filme.id} className='imagens'>
+                                <FiX size={24} color="#ff0000" onClick={() => excluirFilme(filme.id)} className='excluir'/>
+                                <Link to={`/filme/${filme.id}`} style={{backgroundColor: "white"}}><img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="Imagem dos posteres"/></Link>
+                                <Link to={`/filme/${filme.id}`} className='acess'>Acessar</Link>                            
+                            </article>
+                            
+                            )
+                    })}
+                </div>
+            </div>
+            {/* <ul>
                 {filmes.map((item) => {
                     return(
                         <li key={item.id}>
@@ -40,7 +56,7 @@ function Favoritos(){
                         </li>
                     )
                 })}
-            </ul>
+            </ul> */}
             <button className='voltar'><Link to="/">Menu principal</Link></button>
         </div>
     )

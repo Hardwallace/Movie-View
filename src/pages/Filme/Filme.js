@@ -73,20 +73,6 @@ function Filme(){
       <h3>Sinopse</h3>
       <span style={{textAlign: 'justify'}}>{filme.overview}</span>
 
-      <h4>Produtor(es) </h4>
-      {filme.production_companies?.map(production => (
-        <span key={production.id} style={{ display: 'block'}}>
-        {production.logo_path && (
-          <img 
-            src={`https://image.tmdb.org/t/p/w200${production.logo_path}`} 
-            alt={production.name} 
-            style={{ width: '30px', objectFit: 'contain', marginRight: '6px' }} 
-          />
-        )}
-        <span>{production.name}</span>
-        </span>
-      ))}
-
       <span><strong>Gênero: </strong>{filme.genres?.map(genre => genre.name).join('/ ')}</span>
       
       <span><strong>Avaliação: </strong>{filme.vote_average.toFixed(1)}/10</span>

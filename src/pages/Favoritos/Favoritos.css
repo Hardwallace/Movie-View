@@ -62,3 +62,43 @@
 .meus-filmes .voltar a:hover{
     color: black;
 }
+
+.lista-filmes .acess{
+    color: white;
+}
+
+.lista-filmes .imagens img{
+    height: 250px;
+    width: 200px;
+}
+
+.lista-filmes .excluir{
+    cursor: pointer;
+    position: relative;
+    left: 170px;
+    top: -10px;
+}
+
+.containerFavorite .lista-filmes {
+  display: grid;
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+
+@media (min-width: 550px) {
+  .containerFavorite .lista-filmes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .containerFavorite .lista-filmes {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+
