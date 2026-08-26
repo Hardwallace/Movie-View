@@ -43,6 +43,7 @@
     background-color: #116feb;
     border-radius: 7px;
     border-style: none;
+    margin-top: 40px;
     
 }
 
@@ -69,14 +70,17 @@
 
 .lista-filmes .imagens img{
     height: 250px;
-    width: 200px;
+    width: 180px;
 }
 
 .lista-filmes .excluir{
     cursor: pointer;
     position: relative;
-    left: 170px;
+    left: 155px;
     top: -10px;
+    background-color: #116feb;
+    border-radius: 50%;
+    padding: -3px;
 }
 
 .containerFavorite .lista-filmes {

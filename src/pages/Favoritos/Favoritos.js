@@ -43,20 +43,6 @@ function Favoritos(){
                     })}
                 </div>
             </div>
-            {/* <ul>
-                {filmes.map((item) => {
-                    return(
-                        <li key={item.id}>
-                            <span>{item.title}</span>
-
-                            <div>
-                                <Link to={`/filme/${item.id}`}>Ver detalhes</Link>
-                                <button onClick={() => excluirFilme(item.id)}>Excluir</button>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul> */}
             <button className='voltar'><Link to="/">Menu principal</Link></button>
         </div>
     )

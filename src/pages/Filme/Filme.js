@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import './Filme.css'
+import { Link } from "react-router-dom"
 
 import api from '../../services/api'
 
@@ -86,6 +87,7 @@ function Filme(){
             Trailer
           </a>
         </button>
+        <button className='voltar'><Link to="/">Menu principal</Link></button>
       </div>
 
     </div>

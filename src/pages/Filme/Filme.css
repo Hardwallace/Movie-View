@@ -47,15 +47,20 @@
 
 .area-buttons .salvar:hover{
     background-color: green;
-    color: #fff;
 }
 
-.area-buttons a{
+.area-buttons button a{
     text-decoration: none;
     color: #000;
-    transition: all 0.5s;
 }
 
 .area-buttons button a:hover{
     color: #fff;
 }
+
+.area-buttons .voltar:hover{
+    background-color: #116feb;
+    color: #fff;
+}
+
+

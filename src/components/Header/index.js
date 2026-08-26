@@ -1,10 +1,20 @@
 import './header.css';
 import { Link } from 'react-router-dom'
 
+
+
+
 function Header(){
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
     return(
         <header>
-            <Link to='/' className='logo'>Movie Viewer</Link>
+            <Link to='/' className='logo' onClick={scrollToTop}>Movie Viewer</Link>
             <Link to='/favoritos' className='favoritos'>Filmes Salvos</Link>
         </header>
     )

@@ -38,3 +38,7 @@ header{
     color: #000;
     
 }
+
+html {
+  scroll-behavior: smooth;
+}
