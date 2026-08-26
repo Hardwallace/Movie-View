@@ -1,9 +1,6 @@
 import './header.css';
 import { Link } from 'react-router-dom'
 
-
-
-
 function Header(){
 
     const scrollToTop = () => {
@@ -14,7 +11,7 @@ function Header(){
     };
     return(
         <header>
-            <Link to='/' className='logo' onClick={scrollToTop}>Info filmes</Link>
+            <Link to='/' className='logo' onClick={scrollToTop}>Filmes</Link>
             <Link to='/favoritos' className='favoritos'>Filmes Salvos</Link>
         </header>
     )
