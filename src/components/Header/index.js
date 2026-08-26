@@ -14,7 +14,7 @@ function Header(){
     };
     return(
         <header>
-            <Link to='/' className='logo' onClick={scrollToTop}>Movie Viewer</Link>
+            <Link to='/' className='logo' onClick={scrollToTop}>Info filmes</Link>
             <Link to='/favoritos' className='favoritos'>Filmes Salvos</Link>
         </header>
     )
