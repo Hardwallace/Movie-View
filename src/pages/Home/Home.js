@@ -10,15 +10,38 @@ function Home(){
 
   useEffect(() =>{
     async function loadFilmes(){
-      const response = await api.get("movie/now_playing", {
+
+      const hoje = new Date();
+      const sessentaDiasAtras = new Date();
+      sessentaDiasAtras.setDate(hoje.getDate() - 60);
+
+      const dataHoje = hoje.toISOString().split('T')[0];
+      const data60DiasAtras = sessentaDiasAtras.toISOString().split('T')[0];
+      
+      try {
+      const response = await api.get("discover/movie", {
         params:{
           api_key: "e6733bcde99017099c4ab8b55e49646f",
           language: "pt-BR",
+          region: "BR",
+          with_release_type: "3|2",           
+          "release_date.gte": data60DiasAtras, 
+          "release_date.lte": dataHoje,        
           page: 1
         }
       })
-      setFilmes(response.data.results.slice(0,12))
+      const filmesValidados = response.data.results.filter(filme => {
+          if (!filme.release_date) return false;
+          const dataFilme = new Date(filme.release_date);
+          return dataFilme >= sessentaDiasAtras && dataFilme <= hoje;
+        });
+
+      setFilmes(response.data.results.slice(0,20))
       setLoading(false)
+    } catch (error) {
+        console.error("Erro ao carregar filmes", error);
+        setLoading(false);
+      }
     }
 
     loadFilmes();
