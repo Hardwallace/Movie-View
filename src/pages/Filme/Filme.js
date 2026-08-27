@@ -90,14 +90,15 @@ function Filme() {
       )}
 
       <h3>Sinopse</h3>
-      <span style={{ textAlign: 'justify' }}>{filme.overview}</span>
+      <span style={{ textAlign: 'justify',lineHeight: '1.3', padding: '15px', borderRadius: '10px', fontSize: '20px', borderStyle: "solid"}}>{filme.overview}</span>
 
-      <span><strong>Gênero: </strong>{filme.genres?.map(genre => genre.name).join('/ ')}</span>
       
-      <span><strong>Avaliação: </strong>{filme.vote_average?.toFixed(1)}/10</span>
+      <span><strong>Gênero: </strong>{filme.genres?.map(genre => genre.name).join(' / ')}</span>
+      
+      <span><strong>Avaliação: </strong>{filme.vote_average?.toFixed(1)} / 10</span>
 
       <span><strong>Data de lançamento:</strong> {filme.release_date?.split('-').reverse().join('/')}</span>
-
+      
       <div className="area-buttons">
         <button onClick={salvarFilme} className="salvar">Salvar</button>
         <button className='voltar'><Link to="/">Menu principal</Link></button>

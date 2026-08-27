@@ -56,7 +56,6 @@ function Home(){
           {filmes.map((filme) =>{
             return(
               <article key={filme.id}>
-                <strong>{filme.title}</strong>
                 <Link to={`/filme/${filme.id}`} style={{backgroundColor: "white"}}><img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt="Imagem dos posteres"/></Link>
                 <Link to={`/filme/${filme.id}`}>Acessar</Link>
               </article>
