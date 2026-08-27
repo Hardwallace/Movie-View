@@ -11,7 +11,7 @@ function Header(){
     };
     return(
         <header>
-            <Link to='/' className='logo' onClick={scrollToTop}>Filmes em cartaz</Link>
+            <Link to='/' className='logo' onClick={scrollToTop}>Filmes</Link>
             <Link to='/favoritos' className='favoritos'>Filmes Salvos</Link>
         </header>
     )
