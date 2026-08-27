@@ -30,12 +30,7 @@ function Home(){
           page: 1
         }
       })
-      const filmesValidados = response.data.results.filter(filme => {
-          if (!filme.release_date) return false;
-          const dataFilme = new Date(filme.release_date);
-          return dataFilme >= sessentaDiasAtras && dataFilme <= hoje;
-        });
-
+      
       setFilmes(response.data.results.slice(0,20))
       setLoading(false)
     } catch (error) {
